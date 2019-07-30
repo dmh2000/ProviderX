@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,11 +12,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      // wrap widget tree with ChangeNotifierProvider
       home: ChangeNotifierProvider(
-        // instantiate a counter object
-        // listen to it for changes
-        // propagate changes down the widget tree
-        // dispose the counter when done
+        // builder instantiates a Counter object
+        // the provider listens for changes from Counter
+        // and propagates changes down the widget tree
         builder: (context) => Counter(),
         child: MyHomePage(title: 'Flutter Demo Home Page'),
       ),
@@ -43,10 +44,12 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              // use a method from the model to set the text
+              counter.isActive() ? 'click to stop' : 'click to start',
+              style: Theme.of(context).textTheme.display1,
             ),
             Text(
-              // use the value from the counter model
+              // show the value from the counter model
               '${counter.value}',
               style: Theme.of(context).textTheme.display1,
             ),
@@ -54,9 +57,9 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        // use the increment method from the Counter instead of local state
-        onPressed: counter.incrementCount,
-        tooltip: 'Increment',
+        // start and stop counting by accessing a method in the model
+        onPressed: counter.startCount,
+        tooltip: counter.isActive() ? 'Stop' : 'Start',
         child: Icon(Icons.add),
       ),
     );
@@ -66,16 +69,41 @@ class MyHomePage extends StatelessWidget {
 // a model extending ChangeNotifier and exposing a 'value' of some sort
 class Counter extends ChangeNotifier {
   int value;
-
+  Timer t;
   Counter() : value = 0;
 
-  void incrementCount() {
-    ++value;
+  // start and stop a periodic timer that changes the value
+  // and calls notifyListeners
+  void startCount() {
+    if (t != null) {
+      // stop counting
+      // cancel the timer
+      t.cancel();
+      t = null;
+    } else {
+      // start counting once per second
+      t = Timer.periodic(Duration(seconds: 1), (timer) {
+        // increment the value
+        ++value;
+        // notify the provider to rebuild its widget tree
+        notifyListeners();
+      });
+    }
+    // notify here to get update of isActive
     notifyListeners();
   }
 
+  bool isActive() {
+    return t != null;
+  }
+
+  @override
   dispose() {
     super.dispose();
-    print('counter disposed');
+
+    // cancel the timer on dispose
+    if (t != null) {
+      t.cancel();
+    }
   }
 }
