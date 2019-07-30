@@ -45,7 +45,7 @@ This provider is a one-shot. It provides the value to the widget tree once.
 
 ### Complete Example App
 
-[Basic Provider Example](https://github.com/dmh2000/ProviderX/tree/master/futureproviderapp)
+[Basic Provider Example](https://github.com/dmh2000/ProviderX/tree/master/providerapp)
 
 ### Usage (straight from the API doc)
 
