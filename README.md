@@ -7,8 +7,10 @@ by the Google Flutter group as well as many other developers and teams.
 This article attempts to provide examples of basic Provider usage and app architecture. 
 
 This article attempts to provide simple, straightfoward examples of the major
- features of Provider and how to use them. I am a relatively recent 
- (and enthusiastic) adopter of Flutter for mobile apps. If the examples 
+ features of Provider and how to use them. There are other examples online but I found
+ most of them to be a bit complex, hiding the gist of how to use the Provider(s). 
+ 
+ I am a relatively recent (and enthusiastic) adopter of Flutter for mobile apps. If the examples 
  I present are not canonical, missing something, or just plain wrong, 
  then please raise an issue so I can correct it.
 
@@ -43,7 +45,7 @@ This provider is a one-shot. It provides the value to the widget tree once.
 
 ### Complete Example App
 
-[Basic Provider Example](providerapp/README.md)
+[Basic Provider Example](https://github.com/dmh2000/ProviderX/tree/master/futureproviderapp)
 
 ### Usage (straight from the API doc)
 
@@ -84,7 +86,7 @@ This provider can update whenever the model changes. So it can be used for thing
 
 #### Complete Example App
 
-[Counter App Using ChangeNotifyProvider](changenotifyapp/README.md)
+[Counter App Using ChangeNotifyProvider](https://github.com/dmh2000/ProviderX/tree/master/changenotifyapp)
 
 #### Outline of Usage
 
@@ -159,7 +161,7 @@ This is a one-shot. Once the future completes the value is there.
 
 #### Complete Example App
 
-[App Using FutureProvider](futureproviderapp/README.md)
+[App Using FutureProvider](https://github.com/dmh2000/ProviderX/tree/master/futureproviderapp)
 
 #### Outline of Usage
 

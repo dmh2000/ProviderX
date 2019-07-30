@@ -1,10 +1,6 @@
 # changenotifyapp
 
-An app using Provider::ChangeNotifierProvider to duplicate 
+An app using Provider::ChangeNotifierProvider to create something like 
 the Flutter starter app, without using a stateful widget.
 
-The starter app uses a stateful widget and couples 
-two widgets (the count text and the increment button). This
-app eliminates the coupling by providing the Counter 
-object as a middleman through use of the ChangeNotifierProvider.
-
+All the code is in lib/main.dart
