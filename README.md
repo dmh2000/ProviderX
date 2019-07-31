@@ -1,4 +1,4 @@
-# ProviderX
+# Provider Widget Examples
 
 In the Flutter ecosphere, the [Provider package](https://pub.dev/packages/provider), created by [Remi Rousselet](https://github.com/rrousselGit) and maintained by him and the Flutter team, has been put adopted by Google as one of the best approaches to practical state management for Flutter applications. The Provider package is now used internally by the Google Flutter group as well as many other developers and teams.
 
