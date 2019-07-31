@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// a widget inherting the model
+// a widget inheriting the model
 class MyHomePage extends StatelessWidget {
   final String title;
 

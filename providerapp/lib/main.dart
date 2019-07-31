@@ -61,6 +61,7 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
+// example using '.of()'
 // a widget somewhere down the widget tree can get a
 // reference to the model from the Provider using the 'of' syntax
 class MyWidget1 extends StatelessWidget {
@@ -77,9 +78,9 @@ class MyWidget1 extends StatelessWidget {
   }
 }
 
-// a widget somewhere down the widget tree can get a
-// reference to the model from the Provider by
-// wrapping with the Consumer widget
+// example using 'Consumer'
+// a widget somewhere down the widget tree can get a reference
+// to the model from the Provider by wrapping with the Consumer widget
 class MyWidget2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

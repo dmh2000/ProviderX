@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       home: StreamProvider<String>(
           // return a Stream to the builder and StreamProvider listens on it
           // the Provider exposes the stream's value to the widget tree
-          builder: (BuildContext context) => getStream(), // see below
+          builder: (BuildContext context) => getStream(), // see function below
           // catchError exposes an error object if the Stream fails
           catchError: (BuildContext context, Object error) => error.toString(),
           // initialData is what is exposed before the stream starts
@@ -70,7 +70,8 @@ Stream<String> getStream() {
     Duration(
       seconds: 1,
     ),
-    // the periodic stream callback gets an integer count increasing by 1 every period
+    // the periodic stream works by calling the callback with
+    // integer count increasing by 1 every period
     (count) {
       // emit the count itself as a string, could be anything here
       return count.toString();
