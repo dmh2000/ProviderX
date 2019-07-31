@@ -213,3 +213,72 @@ class WidgetThatDependsOnTheFuture extends StatelessWidget {
   }
 }
 ```
+
+## StreamProvider<T>
+
+This widget takes a Stream and exposes the emitted values to the widget tree. 
+In this case suppose you do something to create a Stream. It could
+be a file read, a network socket, whatever. 
+The widget tree will rebuild when the Stream emits a value.
+
+This is a one-shot. Once the future completes the value is there. 
+### Usage 
+
+#### Complete Example App
+
+[App Using StreamProvider](https://github.com/dmh2000/ProviderX/tree/master/streamproviderapp)
+
+#### Outline of Usage
+
+```dart
+
+  // define an object model that the stream will emit
+  class Value {
+    // some data and methods
+  }
+
+  class MyApp extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+      return MaterialApp(
+        title: 'StreamProvider',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // wrap the child with StreamProvider somewhere above the dependent widgets
+        home: StreamProvider<Value>(
+            // return a Stream to the builder and StreamProvider listens on it
+            // the Provider exposes the stream's value to the widget tree
+            builder: (BuildContext context) => getStreamFromSomewhere(),
+            // catchError exposes an error object if the Stream fails
+            catchError: (BuildContext context, Object error) => error.toString(),
+            // initialData is what is exposed before the stream starts
+            initialData: Value(),
+            child:SomeWidgetTree(),
+      );
+    }
+  }
+
+  class MyWidget {
+    // somewhere in SomeWidgetTreee, use the values emitted by the Stream
+    Widget build(BuildContext context) {
+      // use Provider.of to get a reference to the VALUE, not the Stream
+      Value value = Provider.of<String>(context);
+
+      return  child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            'Count',
+            style: Theme.of(context).textTheme.display1,
+          ),
+          Text(
+            // use the value emitted by the stream
+            '$value',
+            style: Theme.of(context).textTheme.display1,
+          ),
+        ],
+      ),
+    }
+  }
+```
