@@ -14,7 +14,7 @@ The [Provider API](https://pub.dev/documentation/provider/latest/) documents six
 
 In the following sections, 'value' and 'model' are used interchangeably, like in the Provider documentation. It could be an atomic value such as a string or int, but it could be a complex object. 
 
-Each of the following sections has a link to a complete example app. The 'Usage' section is just an outline of how to use and probably won't build See the complete example app for a working solution.
+Each of the following sections has a link to a complete example app. The 'Usage' section is just an outline of how to use and probably won't build See the complete example app for a working solution. **All the apps were started with 'flutter create' and the only files changed were pubspec.yaml and lib/main.dart. That's where to look for the working code.**
 
 ## Provider<T> Widget
 
